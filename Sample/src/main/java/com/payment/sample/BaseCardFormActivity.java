@@ -16,7 +16,7 @@ public class BaseCardFormActivity extends AppCompatActivity implements OnCardFor
         CardEditText.OnCardTypeChangedListener {
 
     private static final CardType[] SUPPORTED_CARD_TYPES = { CardType.VISA, CardType.MASTERCARD, CardType.DISCOVER,
-                CardType.AMEX, CardType.DINERS_CLUB, CardType.JCB, CardType.MAESTRO, CardType.UNIONPAY };
+                CardType.AMEX};
 
     private SupportedCardTypesView mSupportedCardTypesView;
 
@@ -34,9 +34,7 @@ public class BaseCardFormActivity extends AppCompatActivity implements OnCardFor
         mCardForm.cardRequired(true)
                 .expirationRequired(true)
                 .cvvRequired(true)
-                .postalCodeRequired(true)
                 .mobileNumberRequired(true)
-                .mobileNumberExplanation("Make sure SMS is enabled for this mobile number")
                 .actionLabel(getString(R.string.purchase))
                 .setup(this);
         mCardForm.setOnCardFormSubmitListener(this);

@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="UnusedAttribute"
-    android:id="@+id/bt_expiration_date_sheet"
     android:layout_width="match_parent"
     android:layout_height="@dimen/bt_expiration_date_sheet_height"
     android:orientation="horizontal"

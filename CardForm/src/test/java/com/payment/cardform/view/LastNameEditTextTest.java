@@ -15,21 +15,21 @@ import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
-public class CountryCodeEditTextTest {
+public class LastNameEditTextTest {
 
-    private CountryCodeEditText mView;
+    private LastNameEditText mView;
 
     @Before
     public void setup() {
         mView = Robolectric.setupActivity(TestActivity.class)
-                .findViewById(R.id.bt_card_form_country_code);
+                .findViewById(R.id.bt_card_form_last_name);
     }
 
     @Test
-    public void getCountryCode_returnsStrippedCountryCode() {
-        mView.setText("+86");
+    public void getMobileNumber_returnsStrippedMobileNumber() {
+        mView.setText("(555) 555-5555");
 
-        assertEquals("86", mView.getCountryCode());
+        assertEquals("5555555555", mView.getLastName());
     }
 
     @Test
@@ -38,9 +38,14 @@ public class CountryCodeEditTextTest {
     }
 
     @Test
-    public void validIfNotEmpty() {
-        mView.setText("+86");
+    public void invalidIfFewerThan8Characters() {
+        mView.setText("123");
+        assertFalse(mView.isValid());
+    }
 
+    @Test
+    public void validIfMoreThan8Characters() {
+        mView.setText("12341234");
         assertTrue(mView.isValid());
     }
 
@@ -53,7 +58,6 @@ public class CountryCodeEditTextTest {
 
     @Test
     public void getErrorMessage_returnsErrorMessageWhenEmpty() {
-        assertEquals(RuntimeEnvironment.application.getString(R.string.bt_country_code_required),
-                mView.getErrorMessage());
+        assertEquals(RuntimeEnvironment.application.getString(R.string.bt_last_name_required), mView.getErrorMessage());
     }
 }
